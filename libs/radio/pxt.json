@@ -1,0 +1,13 @@
+{
+    "additionalFilePath": "../../node_modules/pxt-common-packages/libs/radio",
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "enabled": 0
+                }
+            }
+        }
+    },
+    "searchOnly": true
+}

@@ -1,0 +1,408 @@
+/* Import all components */
+@import "pxtsemantic";
+@import "pxt";
+@import "themepacks";
+@import "blockly-toolbox";
+@import "themes/default/globals/site.variables";
+@import "themes/pxt/globals/site.variables";
+@import "site/globals/site.variables";
+
+/* Reference import */
+@import (reference) "semantic.less";
+
+/*******************************
+    Add your custom CSS here
+*******************************/
+
+/* Roboto font */
+@RobotoFont: data-uri("../docs/static/fonts/Roboto_400_normal.woff");
+
+@font-face {
+  font-family: "Roboto";
+  src: @RobotoFont format("woff");
+}
+
+:root,
+.pxt-theme-root {
+  --pxt-page-font: @pageFont;
+}
+
+.ui.button.download-button {
+  background-color: var(--pxt-primary-background);
+  color: var(--pxt-primary-foreground);
+}
+
+.ui.button.hw-button {
+  background-color: var(--pxt-primary-accent) !important;
+  color: var(--pxt-primary-foreground) !important;
+}
+
+.docs.inlinebutton.ui.button.download-button:hover {
+  background-color: var(--pxt-primary-background);
+  color: var(--pxt-primary-foreground);
+}
+
+#editortools .ui.button.editortools-btn,
+.simtoolbar .ui.button.icon {
+  background-color: var(--pxt-secondary-background);
+  color: var(--pxt-secondary-foreground);
+
+  &:hover {
+    background-color: var(--pxt-secondary-background-hover);
+    color: var(--pxt-secondary-foreground-hover);
+  }
+}
+
+.main:not(.hc) {
+  .simtoolbar .ui.button.icon,
+  #editortools .ui.button.editortools-btn {
+    &:hover {
+      filter: none;
+    }
+  }
+}
+
+#simulator .ui.button.play-button .icon.play {
+  color: var(--pxt-secondary-foreground) !important;
+}
+
+#downloadArea {
+  background: transparent !important;
+}
+
+#homescreen .ui.home {
+  .detailview .actions .card-action {
+    .button.approve {
+      background-color: @mainMenuTutorialBackground;
+    }
+  }
+  .tutorial-progress.orange {
+    background-color: @mainMenuTutorialBackground !important;
+    border-color: @mainMenuTutorialBackground !important;
+  }
+}
+
+/* Ensure project card timestamp fits within the card on tablet-width screens (e.g., iPad portrait) */
+@media only screen and (max-width: @largestTabletScreen) {
+  .projectsdialog .ui.card.file .meta {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+}
+
+#tutorialcard {
+  .ui.button.orange.right.attached {
+    background-color: @mainMenuTutorialBackground;
+    &:focus,
+    &:hover {
+      background-color: darken(@mainMenuTutorialBackground, 20%);
+    }
+  }
+}
+
+.time-machine-header {
+  background-color: @blue;
+}
+
+.time-machine-preview {
+  // Loading div that appears while projects are importing
+  & > div {
+    background: #e8e8e8;
+  }
+}
+
+#root:not(.hc) .tutorial-menu {
+  .ui.circular.label.selected {
+    background-color: @purple !important;
+    color: #e8e8e8 !important;
+    border: 1px solid #e8e8e8 !important;
+
+    &:focus,
+    &:hover {
+      background-color: darken(@purple, 20%) !important;
+    }
+  }
+}
+
+.menubar {
+  .ui.menu .brand .ui.logo,
+  .ui.menu .organization .ui.logo,
+  .ui.menu .ui.logo {
+    height: 2.4rem !important;
+    max-height: 2.8rem !important;
+    object-fit: contain !important;
+    margin-top: 9.5px;
+  }
+  // Only show single organization logo (white version for dark navbar)
+  .ui.menu .brand {
+    display: none !important;
+  }
+  // Force white logo image in org slot via content-override on dark menubar
+  .ui.item.logo.organization img {
+    content: data-uri("../docs/static/codingjr-white.webp") !important;
+  }
+}
+
+.sound-effect-header {
+  background-color: rgb(230, 48, 34); // Match block color
+}
+
+.ui.black.microbit-ribbon.label {
+  position: absolute;
+  border-radius: 0;
+  margin: 0;
+  right: 0;
+  width: 45%;
+  height: 25%;
+  &::before {
+    content: "";
+    background-image: data-uri("../docs/static/codingjr.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    display: block;
+    width: 88%;
+    height: 76%;
+    max-width: 6.75rem;
+    max-height: 1.2rem;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: @largestMobileScreen) {
+  #filelist {
+    background: transparent !important;
+  }
+  #blocklySearchArea {
+    display: none !important;
+  }
+  .ui.black.microbit-ribbon.label {
+    width: 50%;
+    height: 25%;
+    &::before {
+      max-width: 4.9rem;
+      max-height: 0.875rem;
+    }
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+  #filelist {
+    background: transparent !important;
+  }
+  .ui.black.microbit-ribbon.label {
+    width: 55%;
+    height: 20%;
+    &::before {
+      max-width: 5.5rem;
+      max-height: 1rem;
+    }
+  }
+}
+
+/* Small Monitor */
+@media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+}
+
+/* Large Monitor */
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+}
+
+/* Download dialog */
+.ui.downloaddialog.modal > .content {
+  padding: 1rem;
+}
+
+.ui.webusbpair,
+.ui.upload {
+  .firmware {
+    background-color: #ffffce;
+    div.image {
+      justify-content: center;
+      display: flex;
+      padding: 1rem;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
+  .instructions {
+    img {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/* Coding Jr UI Rules: Hide About, Sign-in, Help, Reference, and Hardware */
+.ui.dropdown .menu .item[title*="About"],
+.ui.dropdown .menu .item[aria-label*="About"],
+.ui.dropdown .menu .item[data-value*="about"],
+.ui.item.signin,
+.signin-button,
+.about-dialog,
+.ui.modal.aboutdialog,
+.ui.menu .item.profile-dropdown,
+.ui.menu .item.identity-dropdown,
+.usabilla__overlay,
+#usabilla,
+.usabilla_live_button,
+.feedback-button,
+#help-menuitem,
+.help-button,
+.sidedocs-button,
+.ui.button.help,
+.menuitem[title*="Help"],
+.menuitem[title*="Documentation"],
+.menuitem[title*="Reference"],
+.menuitem[title*="Hardware"],
+.ui.dropdown .menu .item[title*="Help"],
+.ui.dropdown .menu .item[title*="Reference"],
+.ui.dropdown .menu .item[title*="Hardware"],
+.ui.dropdown .menu .item[data-value*="help"],
+.ui.dropdown .menu .item[data-value*="reference"],
+.ui.dropdown .menu .item[data-value*="hardware"] {
+  display: none !important;
+}
+
+/* =============================================
+   Coding Jr: Larger Hero Banner
+   ============================================= */
+#homescreen .ui.home .ui.herobanner,
+#homescreen .hero-banner,
+.ui.herobanner {
+  min-height: 320px !important;
+  max-height: 400px !important;
+}
+
+#homescreen .ui.home .ui.herobanner .hero-image,
+.ui.herobanner .hero-image {
+  min-height: 320px !important;
+  max-height: 400px !important;
+  object-fit: cover !important;
+}
+
+/* =============================================
+   Coding Jr: Footer — show logo only, no name text
+   ============================================= */
+.homefooter .name,
+.homefooter > span,
+.ui.horizontal.list.homefooter .name {
+  display: none !important;
+}
+
+.homefooter img,
+.homefooter .ui.logo {
+  display: inline-block !important;
+  height: 2rem !important;
+  max-height: 2rem !important;
+  object-fit: contain !important;
+}
+
+/* Footer: hide organization name text, show logo only */
+.sandboxfooter .item:not(:has(img)),
+.sandboxfooter .name {
+  display: none !important;
+}
+
+/* =============================================
+   Coding Jr: Hide all gallery sections EXCEPT
+   My Projects (mystuff-segment) and Tutorials
+   ============================================= */
+
+/* Hide every named gallerysegment that is NOT My Projects and NOT Tutorials.
+   My Projects uses class 'mystuff-segment'.
+   Each other gallery gets aria-label equal to gallery name.
+   targetconfig.json already only has 'Tutorials' - this is a visual backup. */
+.ui.segment.gallerysegment:not(.mystuff-segment):not(
+    .search-segment
+  )[aria-label]:not([aria-label="Tutorials"]):not(
+    [aria-label="Search results"]
+  ) {
+  display: none !important;
+}
+
+/* Hide video / courses / all extra sections */
+#homescreen .community-link,
+#homescreen .courses-link,
+#homescreen .ui.home .coursecards,
+#homescreen .ui.home .coursecardsegment,
+#homescreen .ui.home .moregalleries,
+#homescreen .ui.home .linkcard,
+#homescreen .ui.home .linklist {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide the "0" badge on the Home button
+   EXACT DOM: span.ui.label inside div.openproject
+   Confirmed by DevTools inspection
+   To RESTORE: comment this block out
+   ============================================= */
+.ui.item.openproject > span.ui.label,
+.ui.item.openproject span {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide the "?" Help button (top-right on Extensions page)
+   EXACT DOM: a.common-link.common-button.menu-button[title*="Help"]
+   Confirmed by DevTools inspection
+   To RESTORE: comment this block out
+   ============================================= */
+a.common-link.common-button.menu-button[title*="Help"],
+a.common-link.common-button.menu-button[href="/extensions"] {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide "Learn More" button in Extensions panel
+   EXACT DOM: a.common-link.link-button inside div.common-card-footer
+   Confirmed by DevTools inspection
+   To RESTORE: comment this block out
+   ============================================= */
+a.common-link.link-button,
+.common-card-footer a.common-link,
+.common-card-footer a.link-button {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide the hero banner on home page
+   EXACT DOM: div.ui.segment.homecarousel
+   Confirmed by DevTools inspection
+   To RESTORE: comment this block out
+   ============================================= */
+.ui.segment.homecarousel {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide Language picker from the footer
+   (the language/globe icon shown at bottom of home page)
+   To RESTORE: comment out or delete these 3 lines
+   ============================================= */
+.homefooter #langpicker,
+.homefooter .item.langpicker,
+.homefooter .item[data-tooltip*="anguage"] {
+  display: none !important;
+}
+
+/* =============================================
+   FIX: Hide "Coding Jr" / organization name text from footer
+   (the copyright text at very bottom)
+   To RESTORE: comment out or delete these 4 lines
+   ============================================= */
+.homefooter .item.copyright,
+.homefooter .copyright,
+.homefooter .orgname,
+.homefooter > .item:not(:has(img)):not(#langpicker) {
+  display: none !important;
+}
